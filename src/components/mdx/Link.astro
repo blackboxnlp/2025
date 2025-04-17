@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import classNamesLib from 'classnames';
+
+// Wrapping the lib to re-export as a named, and to make it return undefined if the result is an empty string, in order to not output empty `class=""`.
+export const classNames = (...args: Parameters<typeof classNamesLib>): string | undefined => classNamesLib(...args) || undefined;
+
+interface Props extends HTMLAttributes<'a'> {}
+
+const html = await Astro.slots.render('default');
+
+const { class: className, title, ...props } = Astro.props;
+
+let extraClasses: string[] = ["underline", "hover:text-zinc-600"];
+---
+
+<a
+	{...props} target=”_blank”
+	class={classNames(className, extraClasses)}
+	set:html={html}
+/>

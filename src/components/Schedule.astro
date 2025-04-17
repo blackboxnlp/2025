@@ -1,0 +1,70 @@
+---
+import Subtitle from '@/components/mdx/Subtitle.astro';
+import { marked } from 'marked';
+
+interface Props {
+  events: Array<{
+    start_time: string;
+    end_time: string;
+    description: string;
+    papers: Array<{ title: string; authors: string }> | undefined;
+  }>;
+}
+
+const { events } = Astro.props as Props;
+
+const safeMarkedParse = (text: string | null | undefined): string => {
+  try {
+    return marked.parse(text || '', { mangle: false, headerIds: false });
+  } catch (e) {
+    console.error("Markdown parsing error:", e);
+    return text || '';
+  }
+}
+---
+
+<Subtitle>Program</Subtitle>
+
+<div class="schedule-container bg-white text-gray-900 p-6 rounded-lg shadow-sm border border-gray-200">
+  <div> {/* Adds vertical space between event blocks */}
+    {events.map((event, index) => (
+      <div
+        class:list={[
+          "event-item flex flex-col sm:flex-row", // Stack on small screens, row on larger
+          "py-4", // Vertical padding
+          index < events.length - 1 ? "border-b border-gray-200" : "" // Bottom border except for the last item
+        ]}
+      >
+        {/* Time Column */}
+        <div class="time-column w-full sm:w-28 md:w-32 flex-shrink-0 mb-2 sm:mb-0 sm:pr-6 text-left sm:text-right">
+          <p class="text-sm font-semibold text-gray-700 whitespace-nowrap">
+            {event.start_time} – {event.end_time}
+          </p>
+        </div>
+
+        {/* Details Column */}
+        <div class="details-column flex-grow sm:pl-6 sm:border-l border-gray-200">
+          {/* Description */}
+          <div
+            class="max-w-none text-gray-800"
+            set:html={safeMarkedParse(event.description)}
+          />
+
+          {/* Papers List (conditionally rendered) */}
+          {event.papers && event.papers.length > 0 && event.papers.map((paper) => (
+            <div class="paper-item pt-4">
+                <span
+                class="paper-title text-gray-900"
+                set:html={safeMarkedParse(paper.title)}
+                />
+                <span
+                class="paper-authors text-gray-600"
+                set:html={safeMarkedParse(paper.authors)}
+                />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

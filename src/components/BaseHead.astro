@@ -1,0 +1,112 @@
+---
+import "../styles/global.css";
+import { AstroSeo } from "@astrolib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  website_url: string;
+  banner_path: string;
+  x_handle: string;
+  keywords: string;
+  authors: string;
+}
+
+const {
+  title,
+  description,
+  website_url,
+  banner_path,
+  x_handle,
+  keywords,
+  authors,
+} = Astro.props as Props;
+---
+
+<AstroSeo
+  title={title}
+  description={description}
+  canonical={website_url}
+  openGraph={{
+    url: website_url,
+    title: title,
+    description: description,
+    images: [
+      {
+        url: banner_path,
+        width: 1200,
+        height: 630,
+        alt: "Open Graph Image Alt",
+        type: "image/jpeg",
+      },
+    ],
+    site_name: title,
+    type: "website",
+    locale: "en_US",
+  }}
+  twitter={{
+    handle: x_handle,
+    site: x_handle,
+    cardType: "summary_large_image",
+  }}
+/>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Basic Meta Tags -->
+<title>{title}</title>
+<meta
+  name="description"
+  content={description}
+/>
+<meta name="keywords" content={keywords} />
+<meta name="author" content={authors} />
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={website_url} />
+<meta property="og:title" content={title} />
+<meta
+  property="og:description"
+  content={description}
+/>
+<meta
+  property="og:image"
+  content={banner_path}
+/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={website_url} />
+<meta property="twitter:title" content={title} />
+<meta
+  property="twitter:description"
+  content={description}
+/>
+<meta
+  property="twitter:image"
+  content={banner_path}
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={website_url} />
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" content="#ffffff" />
+
+<!-- For IE -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>

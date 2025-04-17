@@ -1,0 +1,64 @@
+---
+import Socials from "@/components/Socials.astro";
+
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  logo_path: string;
+  title: string;
+  items: NavItem[];
+  anthology_link: string;
+  email_link: string;
+  youtube_link: string;
+  x_link: string;
+  github_link: string;
+}
+
+const { logo_path, title, items, anthology_link, email_link, youtube_link, x_link, github_link } = Astro.props as Props;
+---
+
+<footer class="overflow-hidden">
+  <div class="px-8 md:px-12 pt-12 max-w-4xl mx-auto">
+    <hr>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-row gap-4 items-center">
+        <a
+            class="text-black hover:text-black/50 gap-4 items-center tracking-tighter inline-flex font-bold  text-xl"
+            href="/" title="linke to main page"
+          >
+            <img class="h-8" src={logo_path} alt="#_"/>
+            <h1>{title}</h1>
+        </a>
+        <div class="scale-80">
+          
+          <Socials
+            anthology_link={anthology_link}
+            email_link={email_link}
+            youtube_link={youtube_link}
+            x_link={x_link}
+            github_link={github_link}
+          />
+        </div>
+      </div>
+      <div>
+        <ul role="list" class="text-xs flex flex-col gap-2 md:gap-6 md:flex-row text-zinc-500 uppercase">
+          {items.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-black shrink-0">
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pl-12 py-8 max-w-4xl mx-auto">
+    <p class="text-sm text-black">
+      © BlackboxNLP 2025 — Hosted on Github Pages.
+    </p>
+  </div>
+</footer>

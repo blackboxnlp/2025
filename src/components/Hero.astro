@@ -1,0 +1,50 @@
+---
+import Socials from "@/components/Socials.astro";
+
+interface Props {
+  logo_path: string;
+  name: string;
+  description: string;
+  main_conf: string;
+  main_conf_link: string;
+  location: string;
+  date: string;
+  buttons: Array<{ name: string; href: string }>;
+  anthology_link: string;
+  email_link: string;
+  youtube_link: string;
+  x_link: string;
+  github_link: string;
+}
+
+const { logo_path, name, description, main_conf, main_conf_link, location, date, buttons, anthology_link, email_link, youtube_link, x_link, github_link } = Astro.props as Props;
+---
+
+<section class="overflow-hidden relative">
+  <div class="flex flex-col items-center px-8 md:px-12 pt-8 max-w-3xl mx-auto relative">
+    <img class="max-w-xs lg:-mx-4 relative ml-12" src={logo_path} alt="#_"/>
+    <h2 class="text-5xl mt-12 tracking-tighter font-normal text-black">
+      {name}
+    </h2>
+    <h3 class="max-w-3xl mt-6">
+      {description}
+    </h3>
+    <span class="text-zinc-500 mt-2">Co-located with <a href={main_conf_link} target=”_blank” class="underline hover:text-zinc-600">{main_conf}</a> in {location} on {date}</span>
+    <Socials
+      anthology_link={anthology_link}
+      email_link={email_link}
+      youtube_link={youtube_link}
+      x_link={x_link}
+      github_link={github_link}
+    />
+    <ul class="flex flex-row items-center gap-4">
+      {buttons.map((btn) => (
+        <li>
+          <a href={btn.href} class="py-2 w-auto px-4 border-2 h-8 focus:ring-2 rounded-full border-black bg-black hover:bg-transparent text-white duration-200 focus:ring-offset-2 hover:text-black inline-flex items-center justify-center ring-2 focus:ring-black ring-transparent">
+            {btn.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+// Get the slot content
+const slotContent = await Astro.slots.render('default');
+
+// Extract text content (removing any HTML tags)
+const textContent = slotContent.replace(/<[^>]*>/g, '');
+
+const subtitle_id = textContent.toLowerCase().trim()
+                     .replace(/[^\w-]+/g, '') // Remove non-word chars except hyphens
+                     .replace(/^-+|-+$/g, ''); // Remove leading and trailing hyphens
+
+
+---
+
+<h2 class="text-5xl mt-12 tracking-tighter font-normal text-black py-8">
+    <slot/>
+</h2>

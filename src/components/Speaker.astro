@@ -1,0 +1,36 @@
+---
+import { undefined } from 'astro:schema';
+
+interface Props {
+  image_path: string;
+  name: string;
+  affiliation: string;
+  description?: string;
+  link: string;
+}
+
+const { image_path, name, affiliation, description = undefined, link} = Astro.props as Props;
+---
+
+<div class="flex flex-row sm:flex-col bg-white shadow-sm border border-slate-200 rounded-lg sm:max-w-75">
+    <div class:list={[
+      "m-2.5 min-w-2/7 overflow-hidden rounded-md flex justify-center items-center",
+    ]}>
+      <img class="w-full h-full object-cover" src={image_path} alt="profile-picture" />
+    </div>
+    <div class="flex flex-col text-black m-3 min-w-3/5">
+      <a href={link} class="underline">
+        <h4 class="text-xl font-semibold">
+          {name}
+        </h4>
+      </a>
+      <p class="text-sm font-semibold text-zinc-400">
+        {affiliation}
+      </p>
+      {description && (
+        <p class="text-base text-slate-600 mt-4 ">
+          {description}
+        </p>
+      )}
+    </div>
+  </div>

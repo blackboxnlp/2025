@@ -1,0 +1,34 @@
+---
+import Subtitle from '@/components/mdx/Subtitle.astro';
+import Speaker from './Speaker.astro';
+
+interface Props {
+    organizers?: Array<{
+      image_path: string;
+      name: string;
+      affiliation: string;
+      description: string;
+      link: string;
+    }>;
+}
+
+const { organizers = [] } = Astro.props as Props;
+---
+<br>
+{organizers.length > 0 && (
+  <Subtitle>Organizers</Subtitle>
+
+  <p class="pb-6">You can reach the organizers by e-mail to <a href="mailto:blackboxnlp@googlegroups.com" class="underline">blackboxnlp@googlegroups.com</a>.</p>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
+    {organizers.map((org) => (
+      <Speaker
+        image_path={org.image_path}
+        name={org.name}
+        affiliation={org.affiliation}
+        description={org.description}
+        link={org.link}
+      />
+    ))}
+  </div>
+)}

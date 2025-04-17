@@ -1,0 +1,93 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Navigation from "@/components/Navigation.astro"
+import Footer from "@/components/Footer.astro"
+
+import Link from "@/components/mdx/Link.astro";
+import List from "@/components/mdx/List.astro";
+import ListItem from "@/components/mdx/ListItem.astro";
+import Title from "@/components/mdx/Title.astro";
+import Subtitle from "@/components/mdx/Subtitle.astro";
+import Subsubtitle from "@/components/mdx/Subsubtitle.astro";
+import Paragraph from "@/components/mdx/Paragraph.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  website_url: string;
+  banner_path: string;
+  x_handle: string;
+  keywords: string;
+  authors: string;
+  logo_path: string;
+  nav_title: string;
+  nav_items: Array<{ name: string; href: string }>;
+  anthology_link: string;
+  email_link: string;
+  youtube_link: string;
+  x_link: string;
+  github_link: string;
+}
+
+const {
+  title,
+  description,
+  website_url,
+  banner_path,
+  x_handle,
+  keywords,
+  authors,
+  logo_path,
+  nav_title,
+  nav_items,
+  anthology_link,
+  email_link,
+  youtube_link,
+  x_link,
+  github_link
+} = Astro.props as Props;
+
+export const custom_style_components = {
+  h1: Title,
+	h2: Subtitle,
+  h3: Subsubtitle,
+  a: Link,
+  p: Paragraph,
+  ul: List,
+  li: ListItem,
+};
+---
+
+<html lang="en" class="scroll-smooth selection:bg-black selection:text-white">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      website_url={website_url}
+      banner_path={banner_path}
+      x_handle={x_handle}
+      keywords={keywords}
+      authors={authors}
+    />
+  </head>
+  <body class="bg-zinc-100 flex flex-col min-h-screen mx-auto 3xl:max-w-screen-xl relative">
+    <Navigation
+      logo_path={logo_path}
+      title={nav_title}
+      items={nav_items}
+    />
+    <main class="relative w-full px-8 md:px-12 py-12 max-w-4xl mx-auto pt-20">
+        <slot/>
+    </main>
+    <Footer
+      logo_path={logo_path}
+      title={nav_title}
+      items={nav_items}
+      anthology_link={anthology_link}
+      email_link={email_link}
+      youtube_link={youtube_link}
+      x_link={x_link}
+      github_link={github_link}
+    />
+  </body>
+</html>

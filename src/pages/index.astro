@@ -1,0 +1,152 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { custom_style_components } from "@/layouts/MainLayout.astro";
+import site_config from "@/config/site_config.json";
+
+import Hero from "@/components/Hero.astro";
+import Intro from "@/pages/intro.mdx";
+import News from "@/pages/news.mdx";
+import ImportantDates from "@/pages/important_dates.mdx";
+import Schedule from "@/components/Schedule.astro";
+import InvitedSpeakers from "@/components/InvitedSpeakers.astro";
+import Sponsors from "@/components/Sponsors.astro";
+import Organizers from "@/components/Organizers.astro";
+import PreviousEditions from "@/pages/previous_editions.mdx";
+
+interface Props {
+    website_url: string,
+    banner_path: string,
+    x_handle: string,
+    keywords: string,
+    authors: string,
+    logo_path: string;
+    name: string;
+    description: string;
+    main_conf: string;
+    main_conf_link: string;
+    location: string;
+    date: string;
+    nav_title: string;
+    nav_items: Array<{ name: string; href: string }>;
+    buttons: Array<{ name: string; href: string }>;
+    anthology_link: string;
+    email_link: string;
+    youtube_link: string;
+    x_link: string;
+    github_link: string;
+    program_events: Array<{
+      start_time: string;
+      end_time: string;
+      description: string;
+      papers: Array<{ title: string; authors: string }> | undefined;
+    }>;
+    invited_speakers: Array<{
+      image_path: string;
+      name: string;
+      affiliation: string;
+      description: string;
+      link: string;
+    }>;
+    panelists: Array<{
+      image_path: string;
+      name: string;
+      affiliation: string;
+      link: string;
+    }>;
+    sponsors: Array<{
+      image_path: string;
+      link: string;
+    }>;
+    organizers: Array<{
+      image_path: string;
+      name: string;
+      affiliation: string;
+      description: string;
+      link: string;
+    }>;
+}
+
+const {
+  website_url = site_config.website_url,
+  banner_path = site_config.banner_path,
+  x_handle = site_config.x_handle,
+  keywords = site_config.keywords,
+  authors = site_config.authors,
+  logo_path = site_config.logo_path,
+  name = site_config.name,
+  description = site_config.description,
+  main_conf = site_config.main_conf,
+  main_conf_link = site_config.main_conf_link,
+  location = site_config.location,
+  date = site_config.date,
+  buttons = site_config.buttons,
+  anthology_link = site_config.anthology_link,
+  email_link = site_config.email_link,
+  youtube_link = site_config.youtube_link,
+  x_link = site_config.x_link,
+  github_link = site_config.github_link,
+  nav_title = site_config.nav_title,
+  nav_items = site_config.nav_items,
+  program_events = site_config.program_events,
+  invited_speakers = site_config.invited_speakers,
+  panelists = site_config.panelists,
+  sponsors = site_config.sponsors,
+  organizers = site_config.organizers,
+} = Astro.props as Props; 
+
+
+---
+
+<MainLayout
+  title={name}
+  description={description}
+  website_url={website_url}
+  banner_path={banner_path}
+  x_handle={x_handle}
+  keywords={keywords}
+  authors={authors}
+  logo_path={logo_path}
+  nav_title={nav_title}
+  nav_items={nav_items}
+  anthology_link={anthology_link}
+  email_link={email_link}
+  youtube_link={youtube_link}
+  x_link={x_link}
+  github_link={github_link}
+>
+  <Hero
+    logo_path={logo_path}
+    name={name}
+    description={description}
+    main_conf={main_conf}
+    main_conf_link={main_conf_link}
+    location={location}
+    date={date}
+    buttons={buttons}
+    anthology_link={anthology_link}
+    email_link={email_link}
+    youtube_link={youtube_link}
+    x_link={x_link}
+    github_link={github_link}
+  />
+  <div class="relative w-full pt-8 max-w-2xl align-center mx-auto">
+    <Intro components={custom_style_components}/>
+  </div>
+  <News components={custom_style_components}/>
+  <ImportantDates components={custom_style_components}/>
+  <Schedule events={program_events}/>
+  <InvitedSpeakers invited_speakers={invited_speakers} panelists={panelists}/>
+  <Sponsors sponsors={sponsors}/>
+  <Organizers organizers={organizers}/>
+  <PreviousEditions components={custom_style_components}/>
+  <!-- <Body components={custom_style_components}/> -->
+</MainLayout>
+      
+  <!-- <Faq />
+  <LogoCloud />
+  <Work />
+  <Howitworks />
+  <AllScope />
+  <Testimonials />
+  <Pricing />
+  <Cta /> -->

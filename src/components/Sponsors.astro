@@ -1,0 +1,26 @@
+---
+import Subtitle from '@/components/mdx/Subtitle.astro';
+
+interface Props {
+    sponsors?: Array<{
+      image_path: string;
+      link: string;
+    }>;
+}
+
+const { sponsors = [] } = Astro.props as Props;
+---
+<br>
+{(sponsors.length > 0) && (
+  <Subtitle>Our Sponsors</Subtitle>
+
+  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8">
+    {sponsors.map((sponsor) => (
+      <div class="mt-auto sm:max-w-80">
+        <a class="flex flex-row" href={sponsor.link} target="_blank" rel="noopener noreferrer">
+          <img src={sponsor.image_path} alt="Sponsor Logo" class="h-16 w-auto" />
+        </a>
+      </div>
+    ))}
+  </div>
+)}
