@@ -39,8 +39,8 @@ const { logo_path, name, description, main_conf, main_conf_link, location, date,
     />
     <ul class="flex flex-row items-center gap-4">
       {buttons.map((btn) => (
-        <li>
-          <a href={btn.href} class="py-2 w-auto px-4 border-2 h-8 focus:ring-2 rounded-full border-black bg-black hover:bg-transparent text-white duration-200 focus:ring-offset-2 hover:text-black inline-flex items-center justify-center ring-2 focus:ring-black ring-transparent">
+        <li class="text-center">
+          <a href={btn.href} class="py-2 w-auto px-4 border-2 sm:h-8 h-16 focus:ring-2 rounded-full border-black bg-black hover:bg-transparent text-white duration-200 focus:ring-offset-2 hover:text-black inline-flex items-center justify-center ring-2 focus:ring-black ring-transparent">
             {btn.name}
           </a>
         </li>

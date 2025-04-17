@@ -24,24 +24,21 @@ const { logo_path, title, items, anthology_link, email_link, youtube_link, x_lin
   <div class="px-8 md:px-12 pt-12 max-w-4xl mx-auto">
     <hr>
     <div class="flex flex-col gap-4">
-      <div class="flex flex-row gap-4 items-center">
+      <div class="flex flex-col sm:flex-row gap-4 items-left sm:items-center pt-8 sm:pt-0">
         <a
             class="text-black hover:text-black/50 gap-4 items-center tracking-tighter inline-flex font-bold  text-xl"
-            href="/" title="linke to main page"
+            href="/2025" title="link to main page"
           >
             <img class="h-8" src={logo_path} alt="#_"/>
             <h1>{title}</h1>
         </a>
-        <div class="scale-80">
-          
-          <Socials
-            anthology_link={anthology_link}
-            email_link={email_link}
-            youtube_link={youtube_link}
-            x_link={x_link}
-            github_link={github_link}
-          />
-        </div>
+        <Socials
+          anthology_link={anthology_link}
+          email_link={email_link}
+          youtube_link={youtube_link}
+          x_link={x_link}
+          github_link={github_link}
+        />
       </div>
       <div>
         <ul role="list" class="text-xs flex flex-col gap-2 md:gap-6 md:flex-row text-zinc-500 uppercase">

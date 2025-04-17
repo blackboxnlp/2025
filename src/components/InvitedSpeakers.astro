@@ -39,7 +39,7 @@ const { invited_speakers = [], panelists = [] } = Astro.props as Props;
 {panelists.length > 0 && (
   <Subtitle>Panelists</Subtitle>
 
-  <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-4">
     {panelists.map((speaker) => (
       <div class="mt-auto sm:max-w-50">
         <Speaker
