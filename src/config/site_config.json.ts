@@ -19,6 +19,7 @@ interface SiteConfig {
     youtube_link: string;
     x_link: string;
     github_link: string;
+    bluesky_link: string;
     program_events: Array<{
         start_time: string;
         end_time: string;
@@ -81,180 +82,188 @@ const site_config: SiteConfig = {
     youtube_link: "https://www.youtube.com/@blackboxnlp",
     x_link: "https://twitter.com/BlackboxNLP",
     github_link: "https://github.com/blackboxnlp",
-    program_events: [
-        {
-            "start_time": "9:00",
-            "end_time": "9:10",
-            "description": "Opening Remarks",
-            papers: undefined
-        },
-        {
-            "start_time": "9:10",
-            "end_time": "10:00",
-            "description": "Invited talk by **Speaker 1**",
-            papers: undefined
-        },
-        {
-            "start_time": "10:00",
-            "end_time": "10:30",
-            "description": "Oral presentations:",
-            papers: [
-                { title: "**Paper Title 1**", authors: "_Name Lastname, Name Lastname_" },
-                { title: "**Paper Title 2**", authors: "_Name Lastname, Name Lastname_" },
-            ]
-        },
-        {
-            "start_time": "10:30",
-            "end_time": "11:00",
-            "description": "Break ☕",
-            papers: undefined
-        },
-        {
-            "start_time": "11:00",
-            "end_time": "12:30",
-            "description": "In-person & virtual **Poster Session 1**",
-            papers: undefined
-        },
-        {
-            "start_time": "12:30",
-            "end_time": "14:00",
-            "description": "Lunch 🥪",
-            papers: undefined
-        },
-        {
-            "start_time": "14:00",
-            "end_time": "15:00",
-            "description": "Invited talk by **Speaker 2**",
-            papers: undefined
-        },
-        {
-            "start_time": "15:00",
-            "end_time": "15:30",
-            "description": "Oral presentations:",
-            papers: [
-                { title: "**Paper Title 1**", authors: "_Name Lastname, Name Lastname_" },
-                { title: "**Paper Title 2**", authors: "_Name Lastname, Name Lastname_" },
-            ]
-        },
-        {
-            start_time: '15:30',
-            end_time: '16:00',
-            description: 'Break ☕',
-            papers: undefined
-        },
-        {
-            start_time: '15:30',
-            end_time: '16:30',
-            description: 'In-person **Poster Session 2**',
-            papers: undefined
-        },
-        {
-            start_time: '16:30',
-            end_time: '16:40',
-            description: 'Closing remarks and awards',
-            papers: undefined
-        },
-        {
-            start_time: '16:40',
-            end_time: '17:30',
-            description: 'Panel discussion on **Topic**',
-            papers: undefined
-        }
-    ],
-    invited_speakers: [
-        {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Speaker 1",
-            affiliation: "Affiliation",
-            description: "Talk name",
-            link: "/2025"
-        },
-        {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Speaker 2",
-            affiliation: "Affiliation",
-            description: "Talk name",
-            link: "/2025"
-        }
-    ],
-    panelists: [
-        {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Panelist 1",
-            affiliation: "Affiliation",
-            link: "/2025"
-        },
-        {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Panelist 2",
-            affiliation: "Affiliation",
-            link: "/2025"
-        },
-        {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Panelist 3",
-            affiliation: "Affiliation",
-            link: "/2025"
-        },
-        {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Panelist 4",
-            affiliation: "Affiliation",
-            link: "/2025"
-        },
-    ],
-    sponsors: [
-        {
-            image_path: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Google_DeepMind_logo.svg",
-            link: "https://deepmind.google/"
-        },
-        {
-            image_path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg",
-            link: "https://machinelearning.apple.com/",
-        }
-    ],
+    bluesky_link: "https://bsky.app/profile/blackboxnlp.bsky.social",
+    program_events: [],
+    // Example of program events
+    // {
+    //     "start_time": "9:00",
+    //     "end_time": "9:10",
+    //     "description": "Opening Remarks",
+    //     papers: undefined
+    // },
+    // {
+    //     "start_time": "9:10",
+    //     "end_time": "10:00",
+    //     "description": "Invited talk by **Speaker 1**",
+    //     papers: undefined
+    // },
+    // {
+    //     "start_time": "10:00",
+    //     "end_time": "10:30",
+    //     "description": "Oral presentations:",
+    //     papers: [
+    //         { title: "**Paper Title 1**", authors: "_Name Lastname, Name Lastname_" },
+    //         { title: "**Paper Title 2**", authors: "_Name Lastname, Name Lastname_" },
+    //     ]
+    // },
+    // {
+    //     "start_time": "10:30",
+    //     "end_time": "11:00",
+    //     "description": "Break ☕",
+    //     papers: undefined
+    // },
+    // {
+    //     "start_time": "11:00",
+    //     "end_time": "12:30",
+    //     "description": "In-person & virtual **Poster Session 1**",
+    //     papers: undefined
+    // },
+    // {
+    //     "start_time": "12:30",
+    //     "end_time": "14:00",
+    //     "description": "Lunch 🥪",
+    //     papers: undefined
+    // },
+    // {
+    //     "start_time": "14:00",
+    //     "end_time": "15:00",
+    //     "description": "Invited talk by **Speaker 2**",
+    //     papers: undefined
+    // },
+    // {
+    //     "start_time": "15:00",
+    //     "end_time": "15:30",
+    //     "description": "Oral presentations:",
+    //     papers: [
+    //         { title: "**Paper Title 1**", authors: "_Name Lastname, Name Lastname_" },
+    //         { title: "**Paper Title 2**", authors: "_Name Lastname, Name Lastname_" },
+    //     ]
+    // },
+    // {
+    //     start_time: '15:30',
+    //     end_time: '16:00',
+    //     description: 'Break ☕',
+    //     papers: undefined
+    // },
+    // {
+    //     start_time: '15:30',
+    //     end_time: '16:30',
+    //     description: 'In-person **Poster Session 2**',
+    //     papers: undefined
+    // },
+    // {
+    //     start_time: '16:30',
+    //     end_time: '16:40',
+    //     description: 'Closing remarks and awards',
+    //     papers: undefined
+    // },
+    // {
+    //     start_time: '16:40',
+    //     end_time: '17:30',
+    //     description: 'Panel discussion on **Topic**',
+    //     papers: undefined
+    // }
+    invited_speakers: [],
+    //     {
+    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
+    //         name: "Speaker 1",
+    //         affiliation: "Affiliation",
+    //         description: "Talk name",
+    //         link: "/2025"
+    //     },
+    //     {
+    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
+    //         name: "Speaker 2",
+    //         affiliation: "Affiliation",
+    //         description: "Talk name",
+    //         link: "/2025"
+    //     }
+    // ],
+    panelists: [],
+    //     {
+    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
+    //         name: "Panelist 1",
+    //         affiliation: "Affiliation",
+    //         link: "/2025"
+    //     },
+    //     {
+    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
+    //         name: "Panelist 2",
+    //         affiliation: "Affiliation",
+    //         link: "/2025"
+    //     },
+    //     {
+    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
+    //         name: "Panelist 3",
+    //         affiliation: "Affiliation",
+    //         link: "/2025"
+    //     },
+    //     {
+    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
+    //         name: "Panelist 4",
+    //         affiliation: "Affiliation",
+    //         link: "/2025"
+    //     },
+    // ],
+    sponsors: [],
+    //     {
+    //         image_path: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Google_DeepMind_logo.svg",
+    //         link: "https://deepmind.google/"
+    //     },
+    //     {
+    //         image_path: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg",
+    //         link: "https://machinelearning.apple.com/",
+    //     }
+    // ],
     organizers: [
         {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Organizer 1",
-            affiliation: "Affiliation",
-            description: "Description",
-            link: "/2025"
+            image_path: "/public/yonatan.jpg",
+            name: "Yonatan Belinkov",
+            affiliation: "Senior Lecturer, Technion",
+            description: "",
+            link: "https://belinkov.com/"
         },
         {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Organizer 2",
-            affiliation: "Affiliation",
-            description: "Description",
-            link: "/2025"
+            image_path: "https://aaronmueller.github.io/files/profpic_close_centered.jpeg",
+            name: "Aaron Mueller",
+            affiliation: "Assistant Professor, Boston University",
+            description: "",
+            link: "https://aaronmueller.github.io/"
         },
         {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Organizer 3",
-            affiliation: "Affiliation",
-            description: "Description",
-            link: "/2025"
+            image_path: "https://www.bu.edu/cs/files/2023/03/new_pic-507x600.jpg",
+            name: "Najoung Kim",
+            affiliation: "Assistant Professor, Boston University",
+            description: "",
+            link: "https://najoung.kim/"
         },
         {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Organizer 4",
-            affiliation: "Affiliation",
-            description: "Description",
-            link: "/2025"
+            image_path: "https://hanjiechen.github.io/photo/hanjie.jpeg",
+            name: "Hanjie Chen",
+            affiliation: "Assistant Professor, Rice University",
+            description: "",
+            link: "https://hanjiechen.github.io/"
         },
         {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Organizer 5",
-            affiliation: "Affiliation",
-            description: "Description",
-            link: "/2025"
+            image_path: "/public/hosein.jpg",
+            name: "Hosein Mohebbi",
+            affiliation: "PhD Candidate, Tilburg University",
+            description: "",
+            link: "https://hmohebbi.github.io/"
         },
         {
-            image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-            name: "Organizer 6",
-            affiliation: "Affiliation",
-            description: "Description",
-            link: "/2025"
+            image_path: "/public/gabriele.jpg",
+            name: "Gabriele Sarti",
+            affiliation: "PhD Candidate, University of Groningen",
+            description: "",
+            link: "https://gsarti.com"
+        },
+        {
+            image_path: "/public/dana.jpg",
+            name: "Dana Arad",
+            affiliation: "PhD Candidate, Technion",
+            description: "",
+            link: "https://www.linkedin.com/in/dana-arad"
         }
     ]
 };

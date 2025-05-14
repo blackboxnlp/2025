@@ -20,6 +20,7 @@ interface Props {
   email_link: string;
   youtube_link: string;
   x_link: string;
+  bluesky_link: string;
   github_link: string;
 }
 
@@ -37,6 +38,7 @@ const {
   anthology_link=site_config.anthology_link,
   email_link=site_config.email_link,
   youtube_link=site_config.youtube_link,
+  bluesky_link=site_config.bluesky_link,
   x_link=site_config.x_link,
   github_link=site_config.github_link,
 } = Astro.props as Props;
@@ -57,6 +59,7 @@ const {
   email_link={email_link}
   youtube_link={youtube_link}
   x_link={x_link}
+  bluesky_link={bluesky_link}
   github_link={github_link}
 >
 <section class="overflow-hidden relative">

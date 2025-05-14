@@ -1,3 +1,71 @@
 # Shared Task
 
-*This page is under construction, come back later!*
+## Call for Submissions
+
+The field of mechanistic interpretability (MI) is rapidly advancing, yet comparing the efficacy of new methods remains challenging. To foster rigorous evaluation and drive progress, BlackboxNLP 2025 will host a shared task for benchmarking new techniques for localizing circuits and causal latent variables in language models (LM).
+<br/>
+The shared task will leverage the recently proposed [Mechanistic Interpretability Benchmark (MIB)](https://mib-bench.github.io/) by [Mueller et al. (2025)](https://arxiv.org/abs/2504.13151v1). Participants are invited to submit approaches that tackle tasks in two distinct tracks: **Circuit Localization**, i.e. identifying subsets of the LM computation graph that performs a specific task, and **Causal Variable Localization**, i.e. aligning model representations with specific known causal variables.
+<br/>
+![MIB Benchmark Logo](https://mib-bench.github.io/img/mib_logo.png)
+<br/>
+The goal is to benchmark the ability of existing MI methods and identify promising directions to precisely and concisely recover relevant causal pathways or specific causal variables in neural language models. This Call for Papers provides the rules, timeline, and participation details for the shared task. We invite researchers working on attribution, circuit discovery, feature alignment, sparse coding, and related interpretability techniques to participate.
+<br/>
+Refer to the original [MIB Benchmark page](https://mib-bench.github.io/) and the [related paper](https://arxiv.org/abs/2504.13151v1) for more details on the MIB benchmark and its evaluation metrics.
+
+## Important dates
+
+- **May 14th** - Release of the Call for Submissions, including links to [data](https://huggingface.co/collections/mib-bench/mib-datasets-67f55273612ec3067a42a56b)  and [evaluation details](https://github.com/aaronmueller/MIB).
+
+- **August 1st** - Deadline for results submission.
+
+- **August 8th** - Deadline for technical report submission.
+
+- **November 10th** - Workshop date.
+
+## Guidelines for Submissions
+
+Participants are invited to submit their solutions for the two tracks through the [MIB Leaderboard](https://huggingface.co/spaces/mib-bench/leaderboard).
+<br/>
+Submissions should include the following items:
+<br/>
+For the **Circuit Localization Track**, we expect one folder per task/model, whre each folder contains the name of the model and the task, separated by an underscore—for example, `ioi_gpt2`, or `arc-easy_llama3`. 9 .json or .pt files with binary membership variables assigned to each node or edge in the model. If (2), there should be one circuit containing no more than each of the following percentages of edges: `{0, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50}`. In other words, we expect one circuit with k ≤ 0.1 % of edges, one with k ≤ 0.2 % of edges, etc., where k is the percentage of edges in the circuit compared to the full model. If the code provided in the [MIB Circuit Localization Repository](https://github.com/hannamw/MIB-circuit-track) is used, the directory structure will already match the requirements.
+<br/>
+For the **Causal Variable Localization Track**, we expect a code repository with classes compatible with the API defined in the [MIB Causal Variable Localization Repository](https://github.com/atticusg/CausalAbstraction/tree/main). The repository should contain a README file with instructions on how to run the code, including any dependencies and installation steps. The code should be organized in a way that allows for easy navigation and understanding of the implementation.
+<br/>
+Submissions will be evaluated by organizers on the private test set from the MIB benchmark, and results will be made available on the [MIB Leaderboard](https://huggingface.co/spaces/mib-bench/leaderboard). Participants will be invited to submit a technical report describing their approach, results, and any insights gained during the process. The report should be no more than 4 pages long (excluding references) and follow the [BlackboxNLP 2025 formatting guidelines](https://blackboxnlp.github.io/2025/call).
+
+## Task Details
+
+MIB contains two tracks. The circuit localization track benchmarks methods that aim to locate graphs of causal dependencies in neural networks. The causal variable localization track benchmarks methods that aim to locate specific human-interpretable causal variables in neural networks.
+
+### **Circuit Localization Track**
+
+<br/>
+
+![Circuit localization track](https://github.com/aaronmueller/MIB/blob/main/assets/circuit_track.png?raw=true)
+<br/>
+This track benchmarks circuit discovery methods—i.e., methods for locating graphs of causal dependencies in neural networks. Most circuit discovery pipelines look something like this:
+<br/>
+- Compute importance scores for each component or each edge between components.
+- Ablate all components from the network except those that surpass some importance threshold, or those in the top k%.
+- Evaluate how well the circuit (model with only the most important components not ablated) performs, or replicates the full model's behavior.
+<br/>
+In the circuit localization track, participants are asked to employ the [MIB benchmark's provided code](https://github.com/hannamw/MIB-circuit-track) to discover and evaluate LM circuits.
+<br/>
+Two evaluation criteria are employed: **1. how well the circuit performs** overall, and **2. how well it replicates the model's behavior**. Past evaluations often implicitly conflates these two, while here we follow the MIB's approach in treating them as complementary but separate concepts. More details concerning the evaluation are available in the [MIB Circuit Localization Repository](https://github.com/hannamw/MIB-circuit-track).
+
+### **Causal Variable Localization Track**
+<br/>
+![Causal variable localization track](https://github.com/aaronmueller/MIB/blob/main/assets/causal_variable_track.png?raw=true)
+<br/>
+This track benchmarks featurization methods—i.e., methods for transforming model activations into a space where it's easier to isolate a given causal variable. Most pipelines under this paradigm look like this:
+<br/>
+- Curate a dataset of contrastive pairs, where each pair differs only with respect to the targeted causal variable.
+- If using a supervised method, train the featurization method using the contrastive pairs.
+- To evaluate: feed the model an input from a pair, use the featurizer to transform an activation vector, intervene in the transformed space, transform back out, and see whether the model's new behavior aligns with what is expected under the intervention.
+<br/>
+In the causal variable localization track, participants are asked to employ the [MIB benchmark's provided code](https://github.com/atticusg/CausalAbstraction) to train and evaluate featurizers.
+
+## Leaderboard
+
+*Coming soon!*

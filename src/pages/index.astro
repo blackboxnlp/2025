@@ -33,6 +33,7 @@ interface Props {
     email_link: string;
     youtube_link: string;
     x_link: string;
+    bluesky_link: string;
     github_link: string;
     program_events: Array<{
       start_time: string;
@@ -112,6 +113,7 @@ const {
   email_link={email_link}
   youtube_link={youtube_link}
   x_link={x_link}
+  bluesky_link={site_config.bluesky_link}
   github_link={github_link}
 >
   <Hero
@@ -127,6 +129,7 @@ const {
     email_link={email_link}
     youtube_link={youtube_link}
     x_link={x_link}
+    bluesky_link={site_config.bluesky_link}
     github_link={github_link}
   />
   <div class="relative w-full pt-8 max-w-2xl align-center mx-auto">

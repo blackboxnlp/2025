@@ -3,14 +3,14 @@ import Subtitle from '@/components/mdx/Subtitle.astro';
 import Speaker from './Speaker.astro';
 
 interface Props {
-    invited_speakers?: Array<{
+    invited_speakers: Array<{
       image_path: string;
       name: string;
       affiliation: string;
       description: string;
       link: string;
     }>;
-    panelists?: Array<{
+    panelists: Array<{
       image_path: string;
       name: string;
       affiliation: string;
@@ -18,11 +18,11 @@ interface Props {
     }>;
 }
 
-const { invited_speakers = [], panelists = [] } = Astro.props as Props;
+const { invited_speakers, panelists } = Astro.props as Props;
 ---
 <br>
-{invited_speakers.length > 0 && (
-  <Subtitle>Invited Speakers</Subtitle>
+<Subtitle>Invited Speakers</Subtitle>
+{invited_speakers && invited_speakers.length > 0 ? (
 
   <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
     {invited_speakers.map((speaker) => (
@@ -35,6 +35,10 @@ const { invited_speakers = [], panelists = [] } = Astro.props as Props;
       />
     ))}
   </div>
+) : (
+  <p class="text-gray-600 py-8">
+    <em>We will announce invited speakers shortly, stay tuned!</em>
+  </p>
 )}
 {panelists.length > 0 && (
   <Subtitle>Panelists</Subtitle>
