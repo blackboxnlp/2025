@@ -217,7 +217,7 @@ const site_config: SiteConfig = {
     // ],
     organizers: [
         {
-            image_path: "/public/yonatan.jpg",
+            image_path: "/2025/yonatan.jpg",
             name: "Yonatan Belinkov",
             affiliation: "Senior Lecturer, Technion",
             description: "",
@@ -245,21 +245,21 @@ const site_config: SiteConfig = {
             link: "https://hanjiechen.github.io/"
         },
         {
-            image_path: "/public/hosein.jpg",
+            image_path: "/2025/hosein.jpg",
             name: "Hosein Mohebbi",
             affiliation: "PhD Candidate, Tilburg University",
             description: "",
             link: "https://hmohebbi.github.io/"
         },
         {
-            image_path: "/public/gabriele.jpg",
+            image_path: "/2025/gabriele.jpg",
             name: "Gabriele Sarti",
             affiliation: "PhD Candidate, University of Groningen",
             description: "",
             link: "https://gsarti.com"
         },
         {
-            image_path: "/public/dana.jpg",
+            image_path: "/2025/dana.jpg",
             name: "Dana Arad",
             affiliation: "PhD Candidate, Technion",
             description: "",
