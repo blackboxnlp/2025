@@ -50,6 +50,10 @@ interface SiteConfig {
         description: string;
         link: string;
     }>;
+    faq_items: Array<{
+        question: string;
+        answer: string;
+    }>;
 }
 
 const site_config: SiteConfig = {
@@ -265,6 +269,12 @@ const site_config: SiteConfig = {
             description: "",
             link: "https://www.linkedin.com/in/dana-arad"
         }
+    ],
+    faq_items: [
+        {
+            question: "Are dual submissions allowed?",
+            answer: "Yes, dual submissions are allowed if the other venue also allows dual submissions. If your submission is accepted to the archival track of BlackboxNLP, you will have to withdraw your submission to the other venue. Dual submissions to BlackboxNLP and EMNLP (including ARR) are not allowed."
+        },
     ]
 };
 

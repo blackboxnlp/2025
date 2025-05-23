@@ -1,0 +1,87 @@
+---
+import Subtitle from '@/components/mdx/Subtitle.astro';
+
+interface Props {
+    email_link: string;
+    faq_items: Array<{
+      question: string;
+      answer: string;
+    }>;
+}
+
+const { faq_items = [], email_link } = Astro.props as Props;
+---
+
+<Subtitle>FAQ</Subtitle>
+
+<section class="scroll-mt-24" id="faq">
+  <div class="py-12 max-w-4xl mx-auto">
+    <p class="mt-5 text-black">
+      Can't find your answer? Send an <a
+        class="text-blue-400 hover:text-black duration-200 transition-colors"
+        href={`mailto:${email_link}`}
+        >email</a
+      > and we will get back to you.
+    </p>
+    
+    {faq_items.length > 0 ? (
+      <div class="mt-8" x-data="{ openItem: null }">
+        <ul
+          class="list-none bg-white rounded-3xl divide-y divide-zinc-200 shadow-sm"
+          role="list"
+        >
+          {faq_items.map((item, index) => (
+            <li class="relative">
+              <button
+                class="w-full p-6 text-left transition-colors duration-200"
+                @click={`openItem !== ${index} ? openItem = ${index} : openItem = null`}
+                type="button"
+                aria-expanded="false"
+                :aria-expanded={`openItem === ${index}`}
+                aria-controls={`faq-answer-${index}`}
+                id={`faq-question-${index}`}
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg font-medium tracking-tight text-black pr-4">
+                    {item.question}
+                  </h3>
+                  <svg
+                    class="ml-4 h-5 w-5 text-zinc-600 transition-transform duration-200 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    :class={`{'rotate-180': openItem === ${index}, 'rotate-0': openItem !== ${index}}`}
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </button>
+              <div
+                class="overflow-hidden transition-all duration-300 ease-in-out"
+                :class={`openItem === ${index} ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'`}
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+                x-ref={`container${index}`}
+                :style={`openItem === ${index} ? 'max-height: ' + $refs.container${index}.scrollHeight + 'px' : ''`}
+              >
+                <div class="px-6 pb-6 text-zinc-600 leading-relaxed">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ) : (
+      <div class="mt-8 p-6 bg-zinc-50 rounded-lg text-center">
+        <p class="text-zinc-600">No FAQ items available at the moment.</p>
+      </div>
+    )}
+  </div>
+</section>

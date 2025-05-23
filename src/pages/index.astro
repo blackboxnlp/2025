@@ -4,6 +4,7 @@ import { custom_style_components } from "@/layouts/MainLayout.astro";
 import site_config from "@/config/site_config.json";
 
 import Hero from "@/components/Hero.astro";
+import Faq from "@/components/Faq.astro";
 import Intro from "@/pages/intro.mdx";
 import News from "@/pages/news.mdx";
 import ImportantDates from "@/pages/important_dates.mdx";
@@ -65,6 +66,10 @@ interface Props {
       description: string;
       link: string;
     }>;
+    faq_items: Array<{
+      question: string;
+      answer: string;
+    }>;
 }
 
 const {
@@ -93,6 +98,7 @@ const {
   panelists = site_config.panelists,
   sponsors = site_config.sponsors,
   organizers = site_config.organizers,
+  faq_items = site_config.faq_items,
 } = Astro.props as Props; 
 
 
@@ -138,14 +144,15 @@ const {
   <News components={custom_style_components}/>
   <ImportantDates components={custom_style_components}/>
   <Schedule events={program_events}/>
+  <Faq faq_items={faq_items} email_link={email_link}/>
   <InvitedSpeakers invited_speakers={invited_speakers} panelists={panelists}/>
   <Sponsors sponsors={sponsors}/>
-  <Organizers organizers={organizers}/>
+  <Organizers organizers={organizers} organizers_email={email_link}/>
   <PreviousEditions components={custom_style_components}/>
   <!-- <Body components={custom_style_components}/> -->
 </MainLayout>
       
-  <!-- <Faq />
+  <!-- 
   <LogoCloud />
   <Work />
   <Howitworks />
