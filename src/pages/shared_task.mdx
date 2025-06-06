@@ -26,15 +26,16 @@ Refer to the original [MIB Benchmark page](https://mib-bench.github.io/) and the
 
 ## Guidelines for Submissions
 
-Participants are invited to submit their solutions for the two tracks through the [MIB Leaderboard](https://huggingface.co/spaces/mib-bench/leaderboard).
+Participants are invited to submit their solutions for either of the two tracks through the [MIB Leaderboard](https://huggingface.co/spaces/mib-bench/leaderboard).
 <br/>
 Submissions should include the following items:
 <br/>
-For the **Circuit Localization Track**, we expect one folder per task/model, whre each folder contains the name of the model and the task, separated by an underscore—for example, `ioi_gpt2`, or `arc-easy_llama3`. 9 .json or .pt files with binary membership variables assigned to each node or edge in the model. If (2), there should be one circuit containing no more than each of the following percentages of edges: `{0, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50}`. In other words, we expect one circuit with k ≤ 0.1 % of edges, one with k ≤ 0.2 % of edges, etc., where k is the percentage of edges in the circuit compared to the full model. If the code provided in the [MIB Circuit Localization Repository](https://github.com/hannamw/MIB-circuit-track) is used, the directory structure will already match the requirements.
+For the **Circuit Localization Track**, we expect one folder per task/model, where each folder is named after the model and the task, separated by an underscore—for example, `ioi_gpt2`, or `arc-easy_llama3`. You may provide either (1) one .json or .pt per folder with floating-point importance scores assigned to each node or edge in the model; or, (2) nine .json or .pt files per folder, with binary membership variables assigned to each node or edge in the model. If (2), there should be one circuit containing no more than each of the following percentages of edges: `{0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50}`. In other words, we expect one circuit with k ≤ 0.1 % of edges, one with k ≤ 0.2 % of edges, etc., where k is the percentage of edges in the circuit compared to the full model. If the code provided in the [MIB Circuit Localization Repository](https://github.com/hannamw/MIB-circuit-track) is used, the directory structure will already match the requirements.
+See [here](https://huggingface.co/mib-bench/mib-circuits-example/tree/main/importances/pt) for an example of submission type 1, and [here](https://huggingface.co/mib-bench/mib-circuits-example/tree/main/multiple_circuits/pt) for an example of submission type 2. NOTE: You are allowed to submit for a subset of models/tasks! As long as you include ≥ 2 models and ≥ tasks, we will accept your submission.
 <br/>
-For the **Causal Variable Localization Track**, we expect a code repository with classes compatible with the API defined in the [MIB Causal Variable Localization Repository](https://github.com/atticusg/CausalAbstraction/tree/main). The repository should contain a README file with instructions on how to run the code, including any dependencies and installation steps. The code should be organized in a way that allows for easy navigation and understanding of the implementation.
+For the **Causal Variable Localization Track**, we expect a .py script defining an invertible featurizer, a .py script defining at which token positions the featurizer should be applied, and a folder containing a trained featurizer, trained inverse featurizer, and token indices. To learn more about the format of the submission, please see both the [MIB Causal Variable Localization Repository](https://github.com/atticusg/CausalAbstraction/tree/main) and [this example submission](https://huggingface.co/mib-bench/mib-causalvariable-example/tree/main). NOTE: the featurizer should extend the `Featurizer` class, and the modules should extend `torch.nn.Module` (or one of the existing module classes). The repository should contain a README with instructions on how to run the code, including any dependencies and installation steps.
 <br/>
-Submissions will be evaluated by organizers on the private test set from the MIB benchmark, and results will be made available on the [MIB Leaderboard](https://huggingface.co/spaces/mib-bench/leaderboard). Participants will be invited to submit a technical report describing their approach, results, and any insights gained during the process. The report should be no more than 4 pages long (excluding references) and follow the [BlackboxNLP 2025 formatting guidelines](https://blackboxnlp.github.io/2025/call).
+Submissions to either track will be evaluated by organizers on the private test set from the MIB benchmark, and results will be made available on the [MIB Leaderboard](https://huggingface.co/spaces/mib-bench/leaderboard). Participants will be invited to submit a technical report describing their approach, results, and any insights gained during the process. The report should be no more than 4 pages long (excluding references) and follow the [BlackboxNLP 2025 formatting guidelines](https://blackboxnlp.github.io/2025/call).
 
 ## Task Details
 
@@ -52,9 +53,9 @@ This track benchmarks circuit discovery methods—i.e., methods for locating gra
 - Ablate all components from the network except those that surpass some importance threshold, or those in the top k%.
 - Evaluate how well the circuit (model with only the most important components not ablated) performs, or replicates the full model's behavior.
 <br/>
-In the circuit localization track, participants are asked to employ the [MIB benchmark's provided code](https://github.com/hannamw/MIB-circuit-track) to discover and evaluate LM circuits.
+In the circuit localization track, participants are asked (but not required) to employ the [MIB benchmark's provided code](https://github.com/hannamw/MIB-circuit-track) to discover and evaluate LM circuits.
 <br/>
-Two evaluation criteria are employed: **1. how well the circuit performs** overall, and **2. how well it replicates the model's behavior**. Past evaluations often implicitly conflates these two, while here we follow the MIB's approach in treating them as complementary but separate concepts. More details concerning the evaluation are available in the [MIB Circuit Localization Repository](https://github.com/hannamw/MIB-circuit-track).
+Two evaluation criteria are employed: **1. how well the circuit performs** overall (the *CPR* metric), and **2. how well it replicates the model's behavior** (the *CMD* metric). Past evaluations often implicitly conflate these two, while here we follow the MIB's approach in treating them as complementary but separate metrics. More details concerning the evaluation are available in the [MIB Circuit Localization Repository](https://github.com/hannamw/MIB-circuit-track).
 
 ### **Causal Variable Localization Track**
 <br/>
@@ -66,8 +67,8 @@ This track benchmarks featurization methods—i.e., methods for transforming mod
 - If using a supervised method, train the featurization method using the contrastive pairs.
 - To evaluate: feed the model an input from a pair, use the featurizer to transform an activation vector, intervene in the transformed space, transform back out, and see whether the model's new behavior aligns with what is expected under the intervention.
 <br/>
-In the causal variable localization track, participants are asked to employ the [MIB benchmark's provided code](https://github.com/atticusg/CausalAbstraction) to train and evaluate featurizers.
+In the causal variable localization track, participants are asked (but not required) to employ the [MIB benchmark's provided code](https://github.com/atticusg/CausalAbstraction) to train and evaluate featurizers.
 
 ## Leaderboard
 
-*Coming soon!*
+The leaderboard is public! See [here](https://huggingface.co/spaces/mib-bench/leaderboard). You may submit up to **two submissions per week** (excluding those that do not pass our formatting checks). Use the public validation and test sets to prototype your methods before you submit to the leaderboard.
