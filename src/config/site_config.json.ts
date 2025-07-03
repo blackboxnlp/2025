@@ -172,14 +172,14 @@ const site_config: SiteConfig = {
             image_path: "https://sjtu-xai-lab.github.io/img/zqs.png",
             name: "Quanshi Zhang",
             affiliation: "Associate Professor, Shanghai Jiao Tong University",
-            description: "TBA",
+            description: "Talk: TBA",
             link: "https://sjtu-xai-lab.github.io/#people"
         },
         {
             image_path: "/2025/verna.jpg",
             name: "Verna Dankers",
             affiliation: "Postdoc, McGill University",
-            description: "TBA",
+            description: "Talk: TBA",
             link: "https://www.vernadankers.com/"
         }
     ],
