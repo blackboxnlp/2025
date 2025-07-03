@@ -167,7 +167,22 @@ const site_config: SiteConfig = {
     //     description: 'Panel discussion on **Topic**',
     //     papers: undefined
     // }
-    invited_speakers: [],
+    invited_speakers: [
+        {
+            image_path: "https://sjtu-xai-lab.github.io/img/zqs.png",
+            name: "Quanshi Zhang",
+            affiliation: "Associate Professor, Shanghai Jiao Tong University",
+            description: "TBA",
+            link: "https://sjtu-xai-lab.github.io/#people"
+        },
+        {
+            image_path: "/2025/verna.jpg",
+            name: "Verna Dankers",
+            affiliation: "Postdoc, McGill University",
+            description: "TBA",
+            link: "https://www.vernadankers.com/"
+        }
+    ],
     //     {
     //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
     //         name: "Speaker 1",
