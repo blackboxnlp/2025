@@ -14,32 +14,47 @@ interface Props {
 }
 
 const { organizers = [], organizers_email } = Astro.props as Props;
-
-function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = [...array]; // Create a copy to avoid mutating the original
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
-
-// Shuffle the organizers array
-const shuffledOrganizers = shuffleArray(organizers);
 ---
 <br>
-{shuffledOrganizers.length > 0 && (
+{organizers.length > 0 && (
   <Subtitle>Organizers</Subtitle>
   <p class="pb-6">You can reach the organizers by e-mail to <a href={`mailto:${organizers_email}`} class="underline">{organizers_email}</a>.</p>
-  <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
-    {shuffledOrganizers.map((org) => (
-      <Speaker
-        image_path={org.image_path}
-        name={org.name}
-        affiliation={org.affiliation}
-        description={org.description}
-        link={org.link}
-      />
+  <div id="organizers-container" class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
+    {organizers.map((org) => (
+      <div class="organizer-item">
+        <Speaker
+          image_path={org.image_path}
+          name={org.name}
+          affiliation={org.affiliation}
+          description={org.description}
+          link={org.link}
+        />
+      </div>
     ))}
   </div>
 )}
+
+  <script>
+    // Client-side shuffle function
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+    
+    // Shuffle organizers on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('organizers-container');
+      if (container) {
+        const items = Array.from(container.querySelectorAll('.organizer-item'));
+        const shuffledItems = shuffleArray(items);
+        
+        // Clear container and append shuffled items
+        container.innerHTML = '';
+        shuffledItems.forEach(item => container.appendChild(item));
+      }
+    });
+</script>
