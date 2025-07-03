@@ -14,13 +14,25 @@ interface Props {
 }
 
 const { organizers = [], organizers_email } = Astro.props as Props;
+
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array]; // Create a copy to avoid mutating the original
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Shuffle the organizers array
+const shuffledOrganizers = shuffleArray(organizers);
 ---
 <br>
-{organizers.length > 0 && (
+{shuffledOrganizers.length > 0 && (
   <Subtitle>Organizers</Subtitle>
   <p class="pb-6">You can reach the organizers by e-mail to <a href={`mailto:${organizers_email}`} class="underline">{organizers_email}</a>.</p>
   <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
-    {organizers.map((org) => (
+    {shuffledOrganizers.map((org) => (
       <Speaker
         image_path={org.image_path}
         name={org.name}

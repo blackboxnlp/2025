@@ -275,6 +275,14 @@ const site_config: SiteConfig = {
             question: "Are dual submissions allowed?",
             answer: "Yes, dual submissions are allowed if the other venue also allows dual submissions. If your submission is accepted to the archival track of BlackboxNLP, you will have to withdraw your submission to the other venue. Dual submissions to BlackboxNLP and EMNLP (including ARR) are not allowed."
         },
+        {
+            question: "How many models/tasks should I evaluate for the shared task?",
+            answer: "Submissions to the Circuit Localization track should evaluate at least two models and two tasks, while there are no restrictions on the number of models and tasks for the Causal Variable Localization track. However, for any submission (regardless of the track) to be considered for our final ranking, it must be evaluated at least on the three less resource-intensive settings in MIB, namely: (1) GPT-2 on IOI (2) Qwen-2.5 on IOI; and (3) Qwen-2.5 on MCQA."
+        },
+        {
+            question: "How are the shared task submissions evaluated?",
+            answer: "Shared task submissions will be evaluated by the workshop organizers and MIB creators based on the novelty and effectiveness of the proposed method. In practice, including more model-task combinations in the evaluation will strengthen high-scoring submissions by demonstrating the generality of the proposed method's effectiveness. Novelty will be evaluated in light of currently established methods for each one of the tracks."
+        }
     ]
 };
 
