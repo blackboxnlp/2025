@@ -18,7 +18,6 @@ const { organizers = [], organizers_email } = Astro.props as Props;
 <br>
 {organizers.length > 0 && (
   <Subtitle>Organizers</Subtitle>
-  <p class="pb-6">You can reach the organizers by e-mail to <a href={`mailto:${organizers_email}`} class="underline">{organizers_email}</a>.</p>
   <div id="organizers-container" class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
     {organizers.map((org) => (
       <div class="organizer-item">
