@@ -5,30 +5,107 @@ interface Props {
   affiliation: string;
   description?: string;
   link: string;
+  abstract?: string;
+  bio?: string;
 }
 
-const { image_path, name, affiliation, description = undefined, link} = Astro.props as Props;
+const { image_path, name, affiliation, description = undefined, link, abstract = undefined, bio = undefined } = Astro.props as Props;
+const hasDetails = abstract || bio;
+// Generate a unique ID for this component instance
+const componentId = `speaker-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<div class="flex flex-row sm:flex-col bg-white shadow-sm border border-slate-200 rounded-lg sm:max-w-75">
+<div class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg" data-speaker-card={componentId}>
+  <div class="flex flex-row sm:flex-col">
     <div class:list={[
       "m-2.5 min-w-2/7 overflow-hidden rounded-md flex justify-center items-center",
     ]}>
-      <img class="w-full h-full object-cover" src={image_path} alt="profile-picture" />
+      <img class="w-60 h-full object-cover rounded-md" src={image_path} alt="profile-picture" />
     </div>
-    <div class="flex flex-col text-black m-3 min-w-3/5">
-      <a href={link} class="underline">
-        <h4 class="text-xl font-semibold">
-          {name}
-        </h4>
-      </a>
-      <p class="text-sm font-semibold text-zinc-400">
-        {affiliation}
-      </p>
-      {description && (
-        <p class="text-base text-slate-600 mt-4 ">
-          {description}
-        </p>
-      )}
+    <div class="flex flex-col text-black m-3 min-w-3/5 flex-grow">
+      <div class="flex justify-between items-start">
+        <div class="flex-grow">
+          <a href={link} class="underline">
+            <h4 class="text-xl font-semibold">
+              {name}
+            </h4>
+          </a>
+          <p class="text-sm font-semibold text-zinc-400">
+            {affiliation}
+          </p>
+          {description && (
+            <p class="text-base text-slate-600 mt-4">
+              {description}
+            </p>
+          )}
+        </div>
+        {hasDetails && (
+          <button 
+            class="ml-3 mt-1 p-1 hover:bg-gray-100 rounded-md transition-colors duration-200 speaker-toggle-btn"
+            aria-label="Toggle details"
+            data-target={componentId}
+          >
+            <svg 
+              class="w-5 h-5 text-gray-600 transform transition-transform duration-200 arrow-icon" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+        )}
+      </div>
     </div>
   </div>
+  
+  {hasDetails && (
+    <div class="dropdown-content hidden border-t border-slate-200 mx-3 mb-3" data-dropdown={componentId}>
+      <div class="pt-3 space-y-3">
+        {abstract && (
+          <div>
+            <h5 class="font-semibold text-sm text-gray-700 mb-1">Abstract</h5>
+            <p class="text-sm text-gray-600">{abstract}</p>
+          </div>
+        )}
+        {bio && (
+          <div>
+            <h5 class="font-semibold text-sm text-gray-700 mb-1">Bio</h5>
+            <p class="text-sm text-gray-600">{bio}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
+</div>
+
+<script>
+  // This script runs once per page, not per component
+  // Use event delegation to handle all speaker cards
+  document.addEventListener('click', (e) => {
+    const button = e.target.closest('.speaker-toggle-btn');
+    if (!button) return;
+    
+    e.preventDefault();
+    
+    const targetId = button.getAttribute('data-target');
+    if (!targetId) return;
+    
+    const card = document.querySelector(`[data-speaker-card="${targetId}"]`);
+    if (!card) return;
+    
+    const dropdown = card.querySelector(`[data-dropdown="${targetId}"]`);
+    const arrow = button.querySelector('.arrow-icon');
+    
+    if (dropdown && arrow) {
+      dropdown.classList.toggle('hidden');
+      arrow.classList.toggle('rotate-180');
+    }
+  });
+</script>
+
+<style>
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+</style>

@@ -32,6 +32,8 @@ interface SiteConfig {
         affiliation: string;
         description: string;
         link: string;
+        abstract?: string;
+        bio?: string;
     }>;
     panelists: Array<{
         image_path: string;
@@ -172,8 +174,10 @@ const site_config: SiteConfig = {
             image_path: "https://sjtu-xai-lab.github.io/img/zqs.png",
             name: "Quanshi Zhang",
             affiliation: "Associate Professor, Shanghai Jiao Tong University",
-            description: "Talk: TBA",
-            link: "https://sjtu-xai-lab.github.io/#people"
+            description: "Talk: Can Neural Network Interpretability Be the Key to Breaking Through Scaling Law Limitations in Deep Learning?",
+            link: "https://sjtu-xai-lab.github.io/#people",
+            abstract: "The “lack of interpretability” and the “constraints of the scaling law” are two major bottlenecks in deep learning, but they fundamentally converge on the same root cause—the absence of a foundational explanation, localization, and debugging representation problems of a neural network. Currently, most explainable AI research remains at the engineering level, and fails to build up a theoretical connection between the “detailed knowledge representation” and “generalization power.” The interaction-based Interpretability theory proposed by Dr. Quanshi Zhang has partially addressed these issues from a new perspective. It rigorously demonstrates that the complex inference logic of neural networks can be comprehensively summarized as sparse interactions. Based on these interactions, the theory successfully explains the root causes of neural network performance, thereby breaking free from the black-box training paradigm. This enables real-time monitoring and correction of model representation flaws, improving training and testing efficiency, and ultimately overcoming the constraints of the scaling law.",
+            bio: "Dr. Quanshi Zhang is a tenured associate professor in the Department of Computer Science and Engineering at Shanghai Jiao Tong University. He has received the ACM China Rising Star Award. He obtained his Ph.D. from the University of Tokyo, Japan in 2014 and conducted postdoctoral research at the University of California, Los Angeles (UCLA) from 2014 to 2018. Dr. Zhang’s research mainly focuses on explainable AI, and has proposed theory system of interaction-based explanation. He serves as an action editor for TMLR, area chair for NeurIPS 2024 and 2025, presented tutorials on interpretability at IJCAI 2020 and IJCAI 2021."
         },
         {
             image_path: "/2025/verna.jpg",
@@ -297,6 +301,10 @@ const site_config: SiteConfig = {
         {
             question: "How are the shared task submissions evaluated?",
             answer: "Shared task submissions will be evaluated by the workshop organizers and MIB creators based on the novelty and effectiveness of the proposed method. In practice, including more model-task combinations in the evaluation will strengthen high-scoring submissions by demonstrating the generality of the proposed method's effectiveness. Novelty will be evaluated in light of currently established methods for each one of the tracks."
+        },
+        {
+            question: "Are submissions to the shared task archival?",
+            answer: "Yes, submissions to the shared task will be considered archival, and will be published in the BlackboxNLP 2025 workshop proceedings on the ACL Anthology."
         }
     ]
 };

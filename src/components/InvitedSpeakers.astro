@@ -9,6 +9,8 @@ interface Props {
       affiliation: string;
       description: string;
       link: string;
+      abstract?: string;
+      bio?: string;
     }>;
     panelists: Array<{
       image_path: string;
@@ -24,7 +26,7 @@ const { invited_speakers, panelists } = Astro.props as Props;
 <Subtitle>Invited Speakers</Subtitle>
 {invited_speakers && invited_speakers.length > 0 ? (
 
-  <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 gap-4">
     {invited_speakers.map((speaker) => (
       <Speaker
         image_path={speaker.image_path}
@@ -32,6 +34,8 @@ const { invited_speakers, panelists } = Astro.props as Props;
         affiliation={speaker.affiliation}
         description={speaker.description}
         link={speaker.link}
+        abstract={speaker.abstract}
+        bio={speaker.bio}
       />
     ))}
   </div>
