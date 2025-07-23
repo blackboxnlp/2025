@@ -305,6 +305,10 @@ const site_config: SiteConfig = {
         {
             question: "Are submissions to the shared task archival?",
             answer: "Yes, submissions to the shared task will be considered archival, and will be published in the BlackboxNLP 2025 workshop proceedings on the ACL Anthology."
+        },
+        {
+            question: "How are shared task reports evaluated?",
+            answer: "Shared task reports will be evaluated by the workshop organizers to assess whether they meet the requirements for archival publication."
         }
     ]
 };
