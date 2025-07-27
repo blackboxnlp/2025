@@ -87,6 +87,63 @@ This track benchmarks featurization methods—i.e., methods for transforming mod
 <br/>
 In the causal variable localization track, participants are asked (but not required) to employ the [MIB benchmark's provided code](https://github.com/atticusg/CausalAbstraction) to train and evaluate featurizers.
 
+## Technical Report Guidelines
+
+- The report should be no more than 4 pages long (excluding references) and follow the BlackboxNLP 2025 formatting guidelines.
+- Your paper should stand on its own. You can assume the reader is broadly familiar with the field of Mechanistic Interpretability.
+- The title of your submission should start with the prefix: “BlackboxNLP-2025 MIB Shared Task: Submission Title”
+- Papers are not anonymous when submitted for review. Enter your names and affiliations on the paper.
+- We provide the following guideline to help you structure your report. Feel free to use a different structure if it makes more sense.
+
+The technical report should focus on:
+- **Replicability**: present all details that will allow someone else to replicate your system.
+- **Analysis**: focus more on results and analysis and less on discussing rankings; report results on several runs of the method (even beyond the official submissions); present ablation experiments showing usefulness of different features and techniques; show comparisons with baselines.
+- **Duplication**: cite the MIB paper; you can avoid repeating details of the task and data, however, briefly outlining the task and relevant aspects of the data is a good idea. 
+
+### Abstract
+
+A few sentences summarizing the contributions.
+
+### Introduction
+
+- What track are you working on and what is its importance? Be sure to cite the MIB paper. ~1 paragraph
+- What is the main strategy your system uses? ~1 paragraph
+- What did you discover by participating in this task? Key quantitative and qualitative results, such as how you ranked relative to other teams and what your system struggles with. ~1 paragraph
+- Code should be released, please provide a URL (can be non anonymous)
+
+### Background
+- Summarize important details about the task setup: What parts of your track’s pipeline did your submission aim to improve? What models and datasets were used? 
+- Here or in other sections, cite related work that will help the reader to understand your contribution and what aspects of it are novel. If there are specific previous approaches that directly relate to your submission, you should explain them here.
+
+### Method overview
+- Key algorithms and modeling decisions in your method; resources used beyond the provided data; challenging aspects of the task and how your method addresses them. This may require multiple pages and several subsections, and should allow the reader to mostly reimplement your algorithms.
+- Use equations and pseudocode if they help convey your design decisions, as well as explaining them in English. If you are using a widely popular model/algorithm like logistic regression, or stochastic gradient descent, a citation will suffice. you do not need to spell out all the mathematical details.
+- Give an example if possible to describe concretely the stages of your algorithm.
+- If you have multiple systems/configurations, delineate them clearly.
+- This is likely to be the longest section of your paper.
+
+### Experimental setup
+- How data splits (train/dev/test) are used.
+- Key details about preprocessing, hyperparameter tuning, etc. that a reader would need to know to replicate your experiments. If space is limited, some of the details can go in an Appendix.
+- External tools/libraries used, preferably with version number.
+- Summarize the evaluation measures used in the task.
+- You do not need to devote much—if any—space to discussing the organization of your code or file formats.
+
+### Results
+- Main quantitative findings: How well did your method perform at the task according to official metrics? How does it rank in the competition? You should report results on the public test set, and  if time allows, on the public test set as well.
+- Quantitative analysis: Ablations or other comparisons of different design decisions to better understand what works best. Indicate which data split is used for the analyses (e.g. in table captions). 
+- Error analysis: If applicable, look at some of your method’s predictions to get a feel for the kinds of mistakes it makes. 
+
+### Conclusion
+- A few summary sentences about your method, results, and ideas for future work.
+
+### Acknowledgments
+- Anyone you wish to thank who is not an author, which may include grants.
+
+### Appendix
+- Any low-level implementation details—rules and pre-/post-processing steps, features, hyperparameters, etc.—that would help the reader to replicate your system and experiments, but are not necessary to understand major design points of the system and experiments.
+- Any figures or results that aren’t crucial to the main points in your paper but might help an interested reader delve deeper.
+
 ## Leaderboard
 
 The leaderboard is public! See [here](https://huggingface.co/spaces/mib-bench/leaderboard) or below. You may submit up to **two submissions per week** (excluding those that do not pass our formatting checks). Use the public validation and test sets to prototype your methods before you submit to the leaderboard.
