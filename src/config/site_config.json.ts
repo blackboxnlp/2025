@@ -70,7 +70,7 @@ const site_config: SiteConfig = {
     main_conf: "EMNLP 2025",
     main_conf_link: "https://2025.emnlp.org",
     location: "Suzhou, China",
-    date: "November 10th, 2025",
+    date: "November 9th, 2025",
     nav_title: "BlackboxNLP",
     nav_items: [
         { name: "Call for Papers", href: "/2025/call" },
