@@ -182,9 +182,11 @@ const site_config: SiteConfig = {
         {
             image_path: "/2025/verna.jpg",
             name: "Verna Dankers",
-            affiliation: "Postdoc, McGill University",
-            description: "Talk: TBA",
-            link: "https://www.vernadankers.com/"
+            affiliation: "Postdoctoral Researcher, McGill University",
+            description: "Talk: Memorization: Myth or Mystery?",
+            link: "https://www.vernadankers.com/",
+            abstract: "In deep learning, the perspective on memorization of training examples is undergoing a paradigm shift. Previously linked to overfitting and poor generalization, memorization is now seen as benign, beneficial or concerning, depending on the data involved. This shift raises questions about the mystery that is memorization: what should and shouldn't models memorize, how is memorization implemented internally, and, more fundamentally, can we talk about memorization as a phenomenon that is separate from generalization or is this a myth? In this talk, I will provide you with the lay of the land on memorization analyses from a behavioural and model-internal perspective, reflecting on the pressing challenges it poses for interpretability research and why I think we should not shy away from them.",
+            bio: "Verna Dankers is a postdoctoral researcher at McGill University, Canada, working with Siva Reddy. She obtained her PhD from the University of Edinburgh, UK, as part of the UKRI Centre for Doctoral Training in Natural Language Processing, under the supervision of Ivan Titov. Her research focuses on understanding how large language models work through the lenses of compositionality, memorization and generalization. She received the 2025 outstanding paper award at IJCAI and the best paper award at CoNLL 2021 for her work on generalization in language models."
         }
     ],
     //     {
