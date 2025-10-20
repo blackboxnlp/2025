@@ -256,7 +256,7 @@ const site_config: SiteConfig = {
             link: "https://aaronmueller.github.io/"
         },
         {
-            image_path: "https://www.bu.edu/cs/files/2023/03/new_pic-507x600.jpg",
+            image_path: "https://najoung.kim/assets/img/2022_pic.png",
             name: "Najoung Kim",
             affiliation: "Assistant Professor, Boston University",
             description: "",
