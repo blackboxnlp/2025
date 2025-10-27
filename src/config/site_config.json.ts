@@ -89,86 +89,86 @@ const site_config: SiteConfig = {
     x_link: "https://twitter.com/BlackboxNLP",
     github_link: "https://github.com/blackboxnlp",
     bluesky_link: "https://bsky.app/profile/blackboxnlp.bsky.social",
-    program_events: [],
-    // Example of program events
-    // {
-    //     "start_time": "9:00",
-    //     "end_time": "9:10",
-    //     "description": "Opening Remarks",
-    //     papers: undefined
-    // },
-    // {
-    //     "start_time": "9:10",
-    //     "end_time": "10:00",
-    //     "description": "Invited talk by **Speaker 1**",
-    //     papers: undefined
-    // },
-    // {
-    //     "start_time": "10:00",
-    //     "end_time": "10:30",
-    //     "description": "Oral presentations:",
-    //     papers: [
-    //         { title: "**Paper Title 1**", authors: "_Name Lastname, Name Lastname_" },
-    //         { title: "**Paper Title 2**", authors: "_Name Lastname, Name Lastname_" },
-    //     ]
-    // },
-    // {
-    //     "start_time": "10:30",
-    //     "end_time": "11:00",
-    //     "description": "Break ☕",
-    //     papers: undefined
-    // },
-    // {
-    //     "start_time": "11:00",
-    //     "end_time": "12:30",
-    //     "description": "In-person & virtual **Poster Session 1**",
-    //     papers: undefined
-    // },
-    // {
-    //     "start_time": "12:30",
-    //     "end_time": "14:00",
-    //     "description": "Lunch 🥪",
-    //     papers: undefined
-    // },
-    // {
-    //     "start_time": "14:00",
-    //     "end_time": "15:00",
-    //     "description": "Invited talk by **Speaker 2**",
-    //     papers: undefined
-    // },
-    // {
-    //     "start_time": "15:00",
-    //     "end_time": "15:30",
-    //     "description": "Oral presentations:",
-    //     papers: [
-    //         { title: "**Paper Title 1**", authors: "_Name Lastname, Name Lastname_" },
-    //         { title: "**Paper Title 2**", authors: "_Name Lastname, Name Lastname_" },
-    //     ]
-    // },
-    // {
-    //     start_time: '15:30',
-    //     end_time: '16:00',
-    //     description: 'Break ☕',
-    //     papers: undefined
-    // },
-    // {
-    //     start_time: '15:30',
-    //     end_time: '16:30',
-    //     description: 'In-person **Poster Session 2**',
-    //     papers: undefined
-    // },
-    // {
-    //     start_time: '16:30',
-    //     end_time: '16:40',
-    //     description: 'Closing remarks and awards',
-    //     papers: undefined
-    // },
-    // {
-    //     start_time: '16:40',
-    //     end_time: '17:30',
-    //     description: 'Panel discussion on **Topic**',
-    //     papers: undefined
-    // }
+    program_events: [
+        // Example of program events
+        {
+            "start_time": "9:00",
+            "end_time": "9:10",
+            "description": "**Opening Remarks**",
+            papers: undefined
+        },
+        {
+            "start_time": "9:10",
+            "end_time": "10:00",
+            "description": "Invited talk by [**Quanshi Zhang**](https://sjtu-xai-lab.github.io/#people)",
+            papers: undefined
+        },
+        {
+            "start_time": "10:00",
+            "end_time": "10:30",
+            "description": "Oral presentations:",
+            papers: [
+                { title: "**Language Dominance in Multilingual Large Language Models**", authors: "_Nadav Shani, Ali Basirat_" },
+                { title: "**Circuit-Tracer: A New Library for Finding Feature Circuits**", authors: "_Michael Hanna, Mateusz Piotrowski, Jack Lindsey, Emmanuel Ameisen_" },
+            ]
+        },
+        {
+            "start_time": "10:30",
+            "end_time": "11:00",
+            "description": "Break ☕",
+            papers: undefined
+        },
+        {
+            "start_time": "11:00",
+            "end_time": "12:00",
+            "description": "In-person & virtual **Poster Session 1**",
+            papers: undefined
+        },
+        {
+            "start_time": "12:00",
+            "end_time": "13:45",
+            "description": "Lunch 🥪",
+            papers: undefined
+        },
+        {
+            "start_time": "13:45",
+            "end_time": "14:30",
+            "description": "Invited talk by **Verna Dankers**",
+            papers: undefined
+        },
+        {
+            "start_time": "14:30",
+            "end_time": "14:45",
+            "description": "Oral presentation:",
+            papers: [
+                { title: "**Normative Reasoning in Large Language Models: A Comparative Benchmark from Logical and Modal Perspectives**", authors: "_Kentaro Ozeki, Risako Ando, Takanobu Morishita, Hirohiko Abe, Koji Mineshima, Mitsuhiro Okada_" },
+            ]
+        },
+        {
+            start_time: '14:45',
+            end_time: '15:30',
+            description: 'Panel discussion - **Evaluating Interpretability Methods: Challenges and Future Directions**',
+            papers: undefined
+        },
+        {
+            start_time: '15:30',
+            end_time: '16:00',
+            description: 'Break ☕',
+            papers: undefined
+        },
+        {
+            start_time: '16:00',
+            end_time: '17:00',
+            description: 'In-person & virtual **Poster Session 2**',
+            papers: undefined
+        },
+        {
+            start_time: '17:00',
+            end_time: '17:20',
+            description: 'Closing remarks and awards',
+            papers: undefined
+        },
+    ],
     invited_speakers: [
         {
             image_path: "https://sjtu-xai-lab.github.io/img/zqs.png",
@@ -189,21 +189,6 @@ const site_config: SiteConfig = {
             bio: "Verna Dankers is a postdoctoral researcher at McGill University, Canada, working with Siva Reddy. She obtained her PhD from the University of Edinburgh, UK, as part of the UKRI Centre for Doctoral Training in Natural Language Processing, under the supervision of Ivan Titov. Her research focuses on understanding how large language models work through the lenses of compositionality, memorization and generalization. She received the 2025 outstanding paper award at IJCAI and the best paper award at CoNLL 2021 for her work on generalization in language models."
         }
     ],
-    //     {
-    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-    //         name: "Speaker 1",
-    //         affiliation: "Affiliation",
-    //         description: "Talk name",
-    //         link: "/2025"
-    //     },
-    //     {
-    //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
-    //         name: "Speaker 2",
-    //         affiliation: "Affiliation",
-    //         description: "Talk name",
-    //         link: "/2025"
-    //     }
-    // ],
     panelists: [],
     //     {
     //         image_path: "https://www.svgrepo.com/show/105517/user-icon.svg",
