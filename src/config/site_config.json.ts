@@ -73,13 +73,14 @@ const site_config: SiteConfig = {
     date: "November 9th, 2025",
     nav_title: "BlackboxNLP",
     nav_items: [
+        { name: "Accepted Papers", href: "/2025/accepted_papers" },
         { name: "Call for Papers", href: "/2025/call" },
         { name: "Shared Task", href: "/2025/task" },
         { name: "News", href: "/2025/#news" },
         { name: "Program", href: "/2025/#program" },
-        { name: "Organizers", href: "/2025/#organizers" },
     ],
     buttons: [
+        { name: "Accepted Papers", href: "/2025/accepted_papers" },
         { name: "Call for Papers", href: "/2025/call" },
         { name: "Shared Task", href: "/2025/task" },
     ],
@@ -121,7 +122,7 @@ const site_config: SiteConfig = {
         {
             "start_time": "11:00",
             "end_time": "12:00",
-            "description": "In-person & virtual **Poster Session 1**",
+            "description": "**Poster Session 1**",
             papers: undefined
         },
         {
@@ -133,7 +134,7 @@ const site_config: SiteConfig = {
         {
             "start_time": "13:45",
             "end_time": "14:30",
-            "description": "Invited talk by **Verna Dankers**",
+            "description": "Invited talk by [**Verna Dankers**](https://www.vernadankers.com/)",
             papers: undefined
         },
         {
@@ -159,7 +160,7 @@ const site_config: SiteConfig = {
         {
             start_time: '16:00',
             end_time: '17:00',
-            description: 'In-person & virtual **Poster Session 2**',
+            description: '**Poster Session 2**',
             papers: undefined
         },
         {

@@ -1,0 +1,152 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import site_config from '@/config/site_config.json';
+import accepted_papers from '@/config/accepted_papers.json';
+
+import Title from '@/components/mdx/Title.astro';
+
+interface Props {
+  title: string,
+  description: string,
+  website_url: string,
+  banner_path: string,
+  x_handle: string,
+  keywords: string,
+  authors: string,
+  logo_path: string;
+  nav_title: string;
+  nav_items: Array<{ name: string; href: string }>;
+  anthology_link: string;
+  email_link: string;
+  youtube_link: string;
+  x_link: string;
+  bluesky_link: string;
+  github_link: string;
+}
+
+const {
+  title = site_config.name,
+  description = site_config.description,
+  website_url = site_config.website_url,
+  banner_path = site_config.banner_path,
+  x_handle = site_config.x_handle,
+  keywords = site_config.keywords,
+  authors = site_config.authors,
+  logo_path=site_config.logo_path,
+  nav_title=site_config.nav_title,
+  nav_items=site_config.nav_items,
+  anthology_link=site_config.anthology_link,
+  email_link=site_config.email_link,
+  youtube_link=site_config.youtube_link,
+  x_link=site_config.x_link,
+  bluesky_link=site_config.bluesky_link,
+  github_link=site_config.github_link,
+} = Astro.props as Props;
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  website_url={website_url}
+  banner_path={banner_path}
+  x_handle={x_handle}
+  keywords={keywords}
+  authors={authors}
+  logo_path={logo_path}
+  nav_title={nav_title}
+  nav_items={nav_items}
+  anthology_link={anthology_link}
+  email_link={email_link}
+  youtube_link={youtube_link}
+  x_link={x_link}
+  bluesky_link={bluesky_link}
+  github_link={github_link}
+>
+<section class="overflow-hidden relative">
+  <div class="pt-8 max-w-4xl">
+    <Title>Accepted Papers</Title>
+
+    <p class="text-lg font-medium tracking-tight text-zinc-600 pr-4">
+      Below is the list of accepted papers for the BlackboxNLP workshop, categorized by submission type.
+      Click on paper titles to visualize their abstract.
+    </p>
+
+    {accepted_papers.categories.length > 0 ? (
+      accepted_papers.categories.map((category) => (
+        <div class="mt-12">
+          <h2 class="text-2xl font-semibold text-black mb-6">{category.title} ({category.papers.length})</h2>
+          {category.papers.length > 0 ? (
+            <div class="mt-8" x-data="{ openItem: null }">
+              <ul
+                class="list-none bg-white rounded-3xl divide-y divide-zinc-200 shadow-sm"
+                role="list"
+              >
+                {category.papers.map((item, index) => (
+                  <li class="relative">
+                    <button
+                      class="w-full p-6 text-left transition-colors duration-200"
+                      @click={`openItem !== ${index} ? openItem = ${index} : openItem = null`}
+                      type="button"
+                      aria-expanded="false"
+                      :aria-expanded={`openItem === ${index}`}
+                      aria-controls={`${category}-abstract-${index}`}
+                      id={`${category}-paper-${index}`}
+                    >
+                      <div class="flex items-center justify-between">
+                        <div class="flex-col">
+                          <h3 class="text-lg font-medium tracking-tight text-black pr-4">
+                            {item.title}
+                          </h3>
+                          <p class="text-md font-medium tracking-tight text-zinc-600 pr-4">
+                            {item.authors}
+                          </p>
+                        </div>
+                        <svg
+                          class="ml-4 h-5 w-5 text-zinc-600 transition-transform duration-200 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                          :class={`{'rotate-180': openItem === ${index}, 'rotate-0': openItem !== ${index}}`}
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                            clip-rule="evenodd"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                    <div
+                      class="overflow-hidden transition-all duration-300 ease-in-out"
+                      :class={`openItem === ${index} ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'`}
+                      id={`${category}-abstract-${index}`}
+                      role="region"
+                      aria-labelledby={`${category}-paper-${index}`}
+                      x-ref={`container${index}`}
+                      :style={`openItem === ${index} ? 'max-height: ' + $refs.container${index}.scrollHeight + 'px' : ''`}
+                    >
+                      <div class="px-6 pb-6 text-zinc-600 leading-relaxed">
+                        <p>{item.abstract}</p>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div class="mt-8 p-6 bg-zinc-50 rounded-lg text-center">
+              <p class="text-zinc-600">No accepted papers available at the moment.</p>
+            </div>
+          )}
+        </div>
+      ))
+    ) : (
+      <div class="mt-8 p-6 bg-zinc-50 rounded-lg text-center">
+        <p class="text-zinc-600">No accepted papers available at the moment.</p>
+      </div>
+    )}
+  </div>
+</section>
+
+</MainLayout>
