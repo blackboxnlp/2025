@@ -93,6 +93,12 @@ const site_config: SiteConfig = {
     program_events: [
         // Example of program events
         {
+            "start_time": "8:00",
+            "end_time": "9:00",
+            "description": "*Virtual Poster Session 1 (1AM CEST, 7PM EST, 4PM PST)*",
+            papers: undefined
+        },
+        {
             "start_time": "9:00",
             "end_time": "9:10",
             "description": "**Opening Remarks**",
@@ -169,6 +175,12 @@ const site_config: SiteConfig = {
             description: 'Closing remarks and awards',
             papers: undefined
         },
+        {
+            "start_time": "17:30",
+            "end_time": "18:30",
+            "description": "*Virtual Poster Session 2 (9:30AM CEST, 4:30AM EST, 1:30AM PST)*",
+            papers: undefined
+        }
     ],
     invited_speakers: [
         {
@@ -278,6 +290,10 @@ const site_config: SiteConfig = {
         }
     ],
     faq_items: [
+        {
+            question: "How are virtual poster sessions organized?",
+            answer: "Virtual poster sessions will be held on Gather.town. The links to the virtual poster sessions will be available on the Underline page of the BlackboxNLP workshop."
+        },
         {
             question: "Are dual submissions allowed?",
             answer: "Yes, dual submissions are allowed if the other venue also allows dual submissions. If your submission is accepted to the archival track of BlackboxNLP, you will have to withdraw your submission to the other venue. Dual submissions to BlackboxNLP and EMNLP (including ARR) are not allowed."
