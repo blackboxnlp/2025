@@ -178,7 +178,7 @@ const site_config: SiteConfig = {
         {
             "start_time": "17:30",
             "end_time": "18:30",
-            "description": "*Virtual Poster Session 2 (9:30AM CEST, 4:30AM EST, 1:30AM PST)*",
+            "description": "*Virtual Poster Session 2 (10:30AM CEST, 4:30AM EST, 1:30AM PST)*",
             papers: undefined
         }
     ],
